@@ -23,6 +23,39 @@ namespace WebShop.MVC.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            List<StudentViewModel> studentList = new List<StudentViewModel>
+            {
+                new StudentViewModel
+                {
+                    Id = 1,
+                    Name = "Marko Markovic",
+                    IdNumber = "13/2022"
+                },
+                new StudentViewModel
+                {
+                    Id = 2,
+                    Name = "Nikola Nikolic",
+                    IdNumber = "14/2022"
+                },
+                new StudentViewModel
+                {
+                    Id = 3,
+                    Name = "Sima Simic",
+                    IdNumber = "15/2022"
+                }
+            };
+
+
+            return View(studentList);
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

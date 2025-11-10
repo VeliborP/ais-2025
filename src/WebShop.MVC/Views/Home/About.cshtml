@@ -1,0 +1,11 @@
+﻿@model List<StudentViewModel>
+
+@foreach(var student in Model)
+{
+    <div>
+        <p>Id: @student.Id</p>
+        <p>Ime: @student.Name</p>
+        <p>Broj indeksa: @student.IdNumber</p>
+    </div>
+    <hr />
+}
