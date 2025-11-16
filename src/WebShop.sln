@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.MVC", "WebShop.MVC.csproj", "{0EEA8959-4960-45EE-824F-3177F4A89E80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.MVC", "WebShop.MVC\WebShop.MVC.csproj", "{0EEA8959-4960-45EE-824F-3177F4A89E80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.DAL", "..\WebShop.DAL\WebShop.DAL.csproj", "{A31E2390-6A29-47E3-A30E-C96EA4D476F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.DAL", "WebShop.DAL\WebShop.DAL.csproj", "{A31E2390-6A29-47E3-A30E-C96EA4D476F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.BLL", "..\WebShop.BLL\WebShop.BLL.csproj", "{94F39BA4-4B2C-420D-A0FE-414DFB165E3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.BLL", "WebShop.BLL\WebShop.BLL.csproj", "{94F39BA4-4B2C-420D-A0FE-414DFB165E3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
