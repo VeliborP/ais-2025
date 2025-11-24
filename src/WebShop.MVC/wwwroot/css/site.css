@@ -20,3 +20,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 50px !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: initial !important;
+}
