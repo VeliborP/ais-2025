@@ -13,4 +13,5 @@ public partial class Category
     public required string Name { get; set; }
     [StringLength(1500)]
     public string? Description { get; set; }
+    public ICollection<Product> Products { get; set; }
 }
