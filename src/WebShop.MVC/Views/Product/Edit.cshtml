@@ -1,4 +1,4 @@
-﻿@model WebShop.DAL.Models.Product
+﻿@model WebShop.MVC.ViewModels.ProductViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -28,9 +28,37 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="ImageFile"></label>
+                <input asp-for="ImageFile" type="file" class="form-control" accept="image/png, image/jpeg, image/jpg, image/gif" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <div class="mb-2">
+                    <img id="preview" src="@Model.ImagePath" width="150" />
+                    <div>
+                        <button type="button" class="btn btn-sm btn-danger mt-2" id="clearImageBtn"> Delete imaage </button>
+                    </div>
+                </div>
+                
+            }
+            else
+            {
+                <div class="mb-2">
+                    <img id="preview" class="img-thumbnail d-none" style="max-width:200px;" />
+                    <div>
+                        <button type="button" class="btn btn-sm btn-danger mt-2" id="clearImageBtn"> Delete imaage </button>
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="ImagePath" />
+            <input type="hidden" asp-for="DeleteImage" id="DeleteImage" value="false" />
+
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="Model.Categories"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,5 +73,41 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        const input = $('#ImageFile');
+        const preview = $('#preview');
+        const clearBtn = $('#clearImageBtn');
+        const deleteFlag = $('#DeleteImage');
+
+        input.on('change', function () {
+           const file = this.files[0];
+           if (!file) {
+               clearImage();
+               return;
+           }
+
+           const reader = new FileReader();
+           reader.onload = function (e) {
+               preview.attr('src', e.target.result);
+               preview.removeClass('d-none');
+               deleteFlag.val('false');
+           };
+           reader.readAsDataURL(file);
+        });
+
+        clearBtn.on('click', function () {
+            clearImage();
+            deleteFlag.val('true');
+        });
+
+        function clearImage() {
+            input.val('')
+            preview.attr('src', '');
+            preview.addClass("d-none");
+        }
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

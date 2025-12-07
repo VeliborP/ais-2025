@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebShop.DAL.Models
 {
@@ -15,6 +14,8 @@ namespace WebShop.DAL.Models
         [StringLength(1500)]
         public string? Description { get; set; }
         public int? CategoryId { get; set; }
+        [MaxLength(255)]
+        public string? ImagePath { get; set; }
         public Category? Category { get; set; }
     }
 }
