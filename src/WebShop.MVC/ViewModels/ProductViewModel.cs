@@ -29,6 +29,7 @@ namespace WebShop.MVC.ViewModels
         //upload slike proizvoda
         [DisplayName("Product image")]
         public IFormFile? ImageFile { get; set; }
+        [DisplayName("Product image")]
         public string? ImagePath { get; set; }
         public bool DeleteImage { get; set; }
 

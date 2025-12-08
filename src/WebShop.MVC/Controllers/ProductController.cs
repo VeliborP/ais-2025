@@ -57,6 +57,14 @@ namespace WebShop.MVC.Controllers
 
                 if (!allowedExtensions.Contains(extension))
                 {
+                    var categories = await _categoryService.GetAllAsync();
+                    vm.Categories = categories.Select(model => new SelectListItem
+                    {
+                        Value = model.Id.ToString(),
+                        Text = model.Code + "-" + model.Name,
+                        Selected = model.Id == vm.CategoryId
+                    }).ToList();
+
                     ModelState.AddModelError("ImageFile", "Only JPG, PNG, GIF images are allowed.");
                     return View(vm);
                 }
@@ -64,6 +72,14 @@ namespace WebShop.MVC.Controllers
                 // ograničenje veličine fajla
                 if (vm.ImageFile.Length > 5_000_000) // 5 MB
                 {
+                    var categories = await _categoryService.GetAllAsync();
+                    vm.Categories = categories.Select(model => new SelectListItem
+                    {
+                        Value = model.Id.ToString(),
+                        Text = model.Code + "-" + model.Name,
+                        Selected = model.Id == vm.CategoryId
+                    }).ToList();
+
                     ModelState.AddModelError("ImageFile", "File size must be less than 5 MB.");
                     return View(vm);
                 }
