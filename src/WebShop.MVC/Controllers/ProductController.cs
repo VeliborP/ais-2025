@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebShop.BLL.Interfaces;
-using WebShop.DAL.Models;
+//using WebShop.DAL.Models;
 using WebShop.MVC.ViewModels;
 
 namespace WebShop.MVC.Controllers
