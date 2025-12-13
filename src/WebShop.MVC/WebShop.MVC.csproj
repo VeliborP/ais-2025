@@ -18,4 +18,9 @@
     <ProjectReference Include="..\WebShop.BLL\WebShop.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\datatables\css\" />
+    <Folder Include="wwwroot\datatables\js\" />
+  </ItemGroup>
+
 </Project>

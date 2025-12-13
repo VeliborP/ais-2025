@@ -28,6 +28,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
         @if (!string.IsNullOrEmpty(Model.ImagePath))
         {
             <dt class="col-sm-2">

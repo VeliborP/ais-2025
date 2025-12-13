@@ -54,3 +54,4 @@ TestResult.xml
 nunit-*.xml
 
 src/.vs
+/src/WebShop.MVC/wwwroot/uploads
