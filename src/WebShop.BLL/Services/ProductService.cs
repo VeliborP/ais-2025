@@ -47,5 +47,12 @@ namespace WebShop.BLL.Services
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<Category>> GetCategoriesWithProductsAsync()
+        {
+            return await _context.Categories
+            .Include(c => c.Products)
+            .ToListAsync();
+        }
     }
 }

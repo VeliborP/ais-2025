@@ -9,5 +9,6 @@ namespace WebShop.BLL.Interfaces
         Task<Product> CreateAsync(Product category);
         Task<Product> UpdateAsync(Product category);
         Task<bool> DeleteAsync(int id);
+        Task<List<Category>> GetCategoriesWithProductsAsync();
     }
 }

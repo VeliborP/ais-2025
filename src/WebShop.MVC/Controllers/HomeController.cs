@@ -1,21 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebShop.BLL.Interfaces;
+using WebShop.DAL.Models;
 using WebShop.MVC.Models;
+using WebShop.MVC.ViewModels.Home;
 
 namespace WebShop.MVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductService _productService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var categories = await _productService.GetCategoriesWithProductsAsync();
+            var viewModel = IndexViewModel.FromEntities(categories);
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
