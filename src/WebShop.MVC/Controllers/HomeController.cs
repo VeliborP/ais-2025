@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebShop.BLL.Interfaces;
-using WebShop.DAL.Models;
 using WebShop.MVC.Models;
 using WebShop.MVC.ViewModels.Home;
 

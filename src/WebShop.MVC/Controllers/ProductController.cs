@@ -6,7 +6,7 @@ using WebShop.MVC.ViewModels;
 
 namespace WebShop.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -18,13 +18,14 @@ namespace WebShop.MVC.Controllers
             _categoryService = categoryService;
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var products = await _productService.GetAllAsync();
             var vm = products.Select(ProductViewModel.FromEntity).ToList();
             return View(vm);
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var product = await _productService.GetByIdAsync(id);
@@ -32,7 +33,7 @@ namespace WebShop.MVC.Controllers
 
             return View(ProductViewModel.FromEntity(product));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             var categories = await _categoryService.GetAllAsync();
@@ -44,6 +45,7 @@ namespace WebShop.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(ProductViewModel vm)
         {
             if (!ModelState.IsValid) return View(vm);
@@ -106,7 +108,7 @@ namespace WebShop.MVC.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             var product = await _productService.GetByIdAsync(id);
@@ -120,6 +122,7 @@ namespace WebShop.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, ProductViewModel vm)
         {
             if (id != vm.Id) return BadRequest();
@@ -200,7 +203,7 @@ namespace WebShop.MVC.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             var product = await _productService.GetByIdAsync(id);
@@ -211,6 +214,7 @@ namespace WebShop.MVC.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _productService.DeleteAsync(id);

@@ -7,7 +7,7 @@ namespace WebShop.MVC.ViewModels.Account
         [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; } = "";
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Lozinka je obavezna")]
         public string Password { get; set; } = "";
     }
 }
