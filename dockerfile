@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY ["WebShop.MVC/WebShop.MVC.csproj", "WebShop.MVC/"]
+COPY ["src/WebShop.MVC/WebShop.MVC.csproj", "WebShop.MVC/"]
 RUN dotnet restore "WebShop.MVC/WebShop.MVC.csproj"
 
 COPY . .
